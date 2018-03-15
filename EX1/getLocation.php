@@ -1,6 +1,6 @@
 <?php
-	if (!empty($_POST['lat']) && !empty($_POST['long'])) {
-		$url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng='.trim($_POST['lat']).','.trim($_POST['long']).'&sensor=false';
+	if (!empty($_POST['latitude']) && !empty($_POST['longitude'])) {
+		$url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng='.trim($_POST['latitude']).','.trim($_POST['longitude']).'&sensor=false';
 		$json = @file_get_contents($url);
 		$data = json_decode($json);
 		$status = $data->status;
@@ -10,6 +10,6 @@
 		else {
 			$location = '';
 		}
-		document.getElementById("output").innerHTLM = $location;
+		echo $location;
 	}
 ?>

@@ -26,35 +26,33 @@
 		<div id="input">
 			<form class="form-horizontal form-register" method="POST">
 				<div class="form-group">
-					<p class="divmargintop10">Lat</p>
-					<input type="text" name="lat" placeholder="10.881784" class="form-control" id="lat">
-					<p class="divmargintop10">Long</p>
-					<input type="text" name="long" placeholder="106.804496" class="form-control" id="long">
+					<p class="divmargintop10">Latitude</p>
+					<input type="text" name="latitude" placeholder="10.881784" class="form-control" id="latitude">
+					<p class="divmargintop10">Longitude</p>
+					<input type="text" name="longitude" placeholder="106.804496" class="form-control" id="longitude">
 					<button type="button" class="btn btn-success divmargintop10" onclick="showLocation()">Chuyển</button>
 				</div>				
 			</form>
 		</div>
 
-		<!-- <div id="output"></div> -->
-
-		<div id="output1"></div>
+		<div id="output"></div>
 		
 	</div>
 
 	<script type="text/javascript">
 		function showLocation(){
-			var lat = document.getElementById("lat").value;
-			var long = document.getElementById("long").value;
+			var latitude = document.getElementById("latitude").value;
+			var longitude = document.getElementById("longitude").value;
 			$.ajax({
 				type: 'POST',
 				url: 'getLocation.php',
-				data: 'lat='+lat+'&long='+long,
+				data: 'latitude='+latitude+'&longitude='+longitude,
 				success:function(msg){
 					if (msg) {
-						$("#location").hlmt(msg);
+						$("#output").hlmt(msg);
 					}
 					else {
-						$("#location").html('Not Available');
+						$("#output").html('Not Available');
 					}
 				}
 			});
