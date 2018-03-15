@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Lab 1</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<style type="text/css">
+		.divmargintop10{
+			margin-top: 10px;
+		}
+
+		#header{
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+
+	<div class="container">
+
+		<div class="col-md-12 col-xs-12" id="header">
+			<h1>Phần 1</h1>
+		</div>
+
+		<div id="input">
+			<form class="form-horizontal form-register" method="POST">
+				<div class="form-group">
+					<p class="divmargintop10">Lat</p>
+					<input type="text" name="lat" placeholder="10.881784" class="form-control" id="lat">
+					<p class="divmargintop10">Long</p>
+					<input type="text" name="long" placeholder="106.804496" class="form-control" id="long">
+					<button type="button" class="btn btn-success divmargintop10" onclick="showLocation()">Chuyển</button>
+				</div>				
+			</form>
+		</div>
+
+		<!-- <div id="output"></div> -->
+
+		<div id="output1"></div>
+		
+	</div>
+
+	<script type="text/javascript">
+		function showLocation(){
+			var lat = document.getElementById("lat").value;
+			var long = document.getElementById("long").value;
+			$.ajax({
+				type: 'POST',
+				url: 'getLocation.php',
+				data: 'lat='+lat+'&long='+long,
+				success:function(msg){
+					if (msg) {
+						$("#location").hlmt(msg);
+					}
+					else {
+						$("#location").html('Not Available');
+					}
+				}
+			});
+		}
+	</script>
+
+</body>
+</html>
